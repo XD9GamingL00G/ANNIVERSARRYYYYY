@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Share the Love 💕</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Inter", "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #4facfe);
+      background-size: 400% 400%;
+      animation: gradientAnimation 15s ease infinite;
+      z-index: 1;
+    }
+
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      background: white;
+      border-radius: 40px;
+      padding: 48px;
+      max-width: 650px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+      text-align: center;
+      animation: slideInDown 0.8s ease;
+      position: relative;
+      z-index: 10;
+    }
+
+    @keyframes slideInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      color: #667eea;
+      font-size: 2.5rem;
+      margin: 0 0 20px;
+    }
+
+    .heart-rain {
+      font-size: 2rem;
+      margin: 20px 0;
+      animation: rainEffect 1s ease-in-out infinite;
+    }
+
+    @keyframes rainEffect {
+      0%, 100% { opacity: 0; transform: translateY(-20px); }
+      50% { opacity: 1; transform: translateY(0); }
+    }
+
+    .message-box {
+      background: linear-gradient(135deg, #667eea15, #764ba215);
+      border: 3px solid #667eea;
+      border-radius: 24px;
+      padding: 28px;
+      margin: 24px 0 32px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #333;
+      line-height: 1.8;
+      animation: fadeInUp 0.8s ease 0.2s both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .copy-btn, .close-btn {
+      padding: 14px 28px;
+      border: none;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 8px;
+    }
+
+    .copy-btn {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+    }
+
+    .copy-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+    }
+
+    .copy-btn:active {
+      transform: translateY(-1px);
+    }
+
+    .close-btn {
+      background: #f0f0f0;
+      color: #333;
+      border: 2px solid #667eea;
+    }
+
+    .close-btn:hover {
+      background: #667eea;
+      color: white;
+    }
+
+    .feedback {
+      margin-top: 16px;
+      font-size: 1rem;
+      color: #764ba2;
+      font-weight: 600;
+      min-height: 24px;
+    }
+
+    .divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #667eea, transparent);
+      margin: 24px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="animated-bg"></div>
+
+  <div class="container">
+    <h1>💕 Share the Love 💕</h1>
+    
+    <div class="heart-rain">💖 💕 ❤️</div>
+
+    <p>Here's a message from the heart:</p>
+
+    <div class="message-box">
+      HAPPY ANNIVERSARY BABYYYYYYYYYYYYYYYYYYYYY!!!!!!😘😝😍🥰
+    </div>
+
+    <div class="divider"></div>
+
+    <div>
+      <button class="copy-btn" onclick="copyToClipboard()">📋 Copy Message</button>
+      <button class="close-btn" onclick="window.close()">Close</button>
+    </div>
+
+    <div class="feedback" id="feedback"></div>
+  </div>
+
+  <script>
+    function copyToClipboard() {
+      const message = "HAPPY ANNIVERSARY BABYYYYYYYYYYYYYYYYYYYYY!!!!!!😘😝😍🥰";
+      navigator.clipboard.writeText(message).then(() => {
+        const feedback = document.getElementById("feedback");
+        feedback.textContent = "✅ Message copied to clipboard!";
+        setTimeout(() => {
+          feedback.textContent = "";
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

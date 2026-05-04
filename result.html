@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You Got It Right! 💕</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: "Inter", "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #ff1493 0%, #ff69b4 50%, #ffb6c1 100%);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      overflow: auto;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { background: linear-gradient(135deg, #ff1493 0%, #ff69b4 50%, #ffb6c1 100%); }
+      50% { background: linear-gradient(135deg, #ff69b4 0%, #ffb6c1 50%, #ffc0cb 100%); }
+    }
+
+    .container {
+      background: white;
+      border-radius: 50px;
+      padding: 60px 40px;
+      width: 95%;
+      max-width: 800px;
+      box-shadow: 0 30px 100px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      animation: bounceIn 0.8s ease;
+    }
+
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.5) rotateY(180deg);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotateY(0);
+      }
+    }
+
+    .hearts {
+      font-size: 4rem;
+      margin: 20px 0;
+      animation: heartFloat 2s ease-in-out infinite;
+    }
+
+    @keyframes heartFloat {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-20px) scale(1.1); }
+    }
+
+    h1 {
+      background: linear-gradient(135deg, #ff1493, #ff69b4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 3.5rem;
+      margin: 20px 0;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .subtext {
+      font-size: 1.8rem;
+      color: #ff1493;
+      margin: 16px 0;
+      font-weight: 700;
+    }
+
+    .message {
+      background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 105, 180, 0.1));
+      border: 4px solid #ff1493;
+      border-radius: 30px;
+      padding: 40px;
+      margin: 32px 0;
+      font-size: 1.5rem;
+      color: #333;
+      font-weight: 600;
+      line-height: 2;
+      animation: slideInUp 0.8s ease 0.2s both;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .confetti-container {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #FF1493;
+      animation: confettiFall 3s linear forwards;
+    }
+
+    @keyframes confettiFall {
+      to {
+        transform: translateY(100vh) rotateZ(720deg);
+        opacity: 0;
+      }
+    }
+
+    .heart-rain {
+      position: absolute;
+      font-size: 2rem;
+      animation: confettiFall 2.5s linear forwards;
+    }
+
+    .button {
+      background: linear-gradient(135deg, #ff1493, #ff69b4);
+      color: white;
+      border: none;
+      padding: 16px 40px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border-radius: 50px;
+      cursor: pointer;
+      margin: 12px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(255, 20, 147, 0.4);
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(255, 20, 147, 0.6);
+    }
+
+    .button:active {
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+<body>
+  <div class="confetti-container" id="confettiContainer"></div>
+
+  <div class="container">
+    <div class="hearts">💕 💖 💗 💝 💞</div>
+    
+    <h1>CORRECT! ✓</h1>
+    
+    <div class="subtext">You got it absolutely right!</div>
+
+    <div class="message">
+      I love you MORE than ALOT ALOT<br>
+      I love you SO MUCH I DON'T EVEN KNOW WHAT TO DO WITH MYSELF<br>
+      I love you SO MUCH I WANNA BE WITH YOU FOREVER AND EVER<br><br>
+      All of the above and infinitely more! 💕
+    </div>
+
+    <div class="hearts">😘 🥰 😍 😝</div>
+
+    <div>
+      <button class="button" onclick="window.close()">Close 💋</button>
+      <button class="button" onclick="window.history.back()">Go Back 💕</button>
+    </div>
+  </div>
+
+  <script>
+    function createConfetti() {
+      const container = document.getElementById("confettiContainer");
+      const emojis = ["❤️", "💕", "💖", "💗", "💝", "💞"];
+      
+      for (let i = 0; i < 60; i++) {
+        setTimeout(() => {
+          const confetti = document.createElement("div");
+          if (Math.random() > 0.5) {
+            confetti.className = "heart-rain";
+            confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            confetti.style.fontSize = Math.random() * 20 + 15 + "px";
+          } else {
+            confetti.className = "confetti";
+          }
+          
+          confetti.style.left = Math.random() * 100 + "%";
+          confetti.style.top = "-10px";
+          confetti.style.animation = `confettiFall ${Math.random() * 2 + 2.5}s linear forwards`;
+          container.appendChild(confetti);
+          
+          setTimeout(() => confetti.remove(), 3000);
+        }, i * 50);
+      }
+    }
+
+    createConfetti();
+  </script>
+</body>
+</html>

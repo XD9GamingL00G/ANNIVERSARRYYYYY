@@ -1,10 +1,16 @@
-const triviaButton = document.getElementById("triviaButton");
-const secretButton = document.getElementById("secretButton");
+document.addEventListener('DOMContentLoaded', () => {
+  const triviaButton = document.getElementById("triviaButton");
+  const secretButton = document.getElementById("secretButton");
 
-triviaButton.addEventListener("click", () => {
-  window.open("trivia.html", "_blank");
-});
+  if (triviaButton) {
+    triviaButton.addEventListener("click", () => {
+      window.open("trivia.html", "_blank");
+    });
+  }
 
-secretButton.addEventListener("click", () => {
-  window.open("secret.html", "_blank");
+  if (secretButton) {
+    secretButton.addEventListener("click", () => {
+      window.open("secret.html", "_blank");
+    });
+  }
 });
